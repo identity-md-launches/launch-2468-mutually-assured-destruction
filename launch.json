@@ -1,0 +1,24 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "MADToken",
+    "name": "Mutually Assured Destruction",
+    "symbol": "MAD",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0xa0df17b5ac76ababa36e1450e2cbcd18a620c845",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "economics": {
+    "poolBps": 8000,
+    "initialMarketCapWei": "2000000000000000000000000",
+    "remainderTo": "0x1ee3ffadfe138415a2ddaedeebe5f46616fa413d"
+  },
+  "notes": "MADToken (src/MADToken.sol) is a plain, fixed-supply ERC-20 built on OpenZeppelin Contracts v5.4.0 ERC20. Its constructor takes no arguments and mints the whole supply of 1,000,000,000 MAD (18 decimals, 1000000000000000000000000000 minor units) once to msg.sender, the ProjectFactory, which pays it out: the swarm's share to the launch's MerkleDistributor, poolBps of the supply into the single-sided Uniswap v4 pool paired with FWA (0xa0df17b5ac76ababa36e1450e2cbcd18a620c845) and the remainder to economics.remainderTo. Transfers, allowances and transferFrom are unmodified ERC20: no fee, tax, burn on transfer, reflection, max-wallet or cooldown, so every launch flow (factory to distributor, distributor to claimant, pool seed, swaps through the PoolManager) moves exactly the stated amount, and the token needs no $factory, $poolManager or $launchNumber exemptions. There is no mint, burn, burnFrom, pause, blocklist, freeze, seize, fee setter, owner, upgrade path, receive or fallback: the supply can never grow and no address can move or freeze another holder's balance. decimals() is a pure override returning 18. This launch has no application contracts and no initialization calls. pool.initialPrice is provenance only; the deployer derives the opening price from economics.initialMarketCapWei and totalSupply."
+}
